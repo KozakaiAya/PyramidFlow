@@ -51,7 +51,7 @@ batch_size = 32
 my_model.summary()
 
 
-hist = model.fit_generator(
+hist = my_model.fit_generator(
     generator=utils.data_generator(myconfig.dataset_path, batch_size=batch_size),
     steps_per_epoch=train_data_count // batch_size,
     epochs=100,
