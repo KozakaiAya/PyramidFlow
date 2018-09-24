@@ -39,7 +39,7 @@ callbacks = [
     keras.callbacks.EarlyStopping(
         monitor='loss', patience=20, verbose=1, mode='auto'),
     keras.callbacks.CSVLogger(
-        filename=os.path.join(myconfig.log_path, 'stats_per_epoch.csv'), append=False))
+        filename=os.path.join(myconfig.log_path, 'stats_per_epoch.csv'), append=False)
 ]
 
 keras.utils.plot_model(my_model, to_file=os.path.join(myconfig.model_save_path, 'model.png'), show_shapes=True)
