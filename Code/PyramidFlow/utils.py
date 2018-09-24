@@ -13,6 +13,9 @@ def get_frame_tuple_list(path):
 
     return frame_tuple_list
 
+def resize(img):
+    return cv2.resize(image, (myconfig.image_w, myconfig.image_h), interpolation=cv2.INTER_LANCZOS4)
+
 def data_generator(data_path, batch_size=32):
     frame_list = get_frame_tuple_list(data_path)
     frame_count = len(frame_list)
@@ -28,11 +31,11 @@ def data_generator(data_path, batch_size=32):
             img4_name = os.path.join(data_path, frame_list[idx] + '_3.png')
             img5_name = os.path.join(data_path, frame_list[idx] + '_4.png')
 
-            img1 = cv2.imread(img1_name)
-            img2 = cv2.imread(img2_name)
-            img3 = cv2.imread(img3_name)
-            img4 = cv2.imread(img4_name)
-            img5 = cv2.imread(img5_name)
+            img1 = resize(cv2.imread(img1_name))
+            img2 = resize(cv2.imread(img2_name))
+            img3 = resize(cv2.imread(img3_name))
+            img4 = resize(cv2.imread(img4_name))
+            img5 = resize(cv2.imread(img5_name))
 
             data = np.concatenate((img1, img2, img4, img5), axis=2)
             batch_data_list.append(data)

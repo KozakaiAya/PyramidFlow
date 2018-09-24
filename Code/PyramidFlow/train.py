@@ -9,7 +9,7 @@ import custom_loss
 import myconfig
 import utils
 
-my_model = model.pyramid_model(input_shape=(540, 960, 12))
+my_model = model.pyramid_model(input_shape=(myconfig.image_h, myconfig.image_w, 12))
 
 optimizer = keras.optimizers.nadam(
     lr=myconfig.lr,

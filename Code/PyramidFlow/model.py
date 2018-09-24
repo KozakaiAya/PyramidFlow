@@ -159,7 +159,7 @@ def lambda_upsampling(src, target):
 def pyramid_model(input_shape):
     inputs = Input(input_shape)
     input_scale = Lambda(lambda x: x * 2.0 - 1.0)(inputs)
-
+    
     # Mask Model
     conv1 = Conv2D(
         filters=64,
