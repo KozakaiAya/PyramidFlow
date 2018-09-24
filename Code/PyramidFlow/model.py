@@ -153,7 +153,7 @@ def combine_pyramid_4p(x):
     return output
 
 def lambda_upsampling(src, target):
-    return Lambda(lambda x: tf.image.resize_nearest_neighbor(x, tf.shape(target)[1], tf.shape(target)[2]))(src)
+    return Lambda(lambda x: tf.image.resize_nearest_neighbor(x, (tf.shape(target)[1], tf.shape(target)[2])))(src)
 
 def pyramid_model(input_shape):
     inputs = Input(input_shape)
