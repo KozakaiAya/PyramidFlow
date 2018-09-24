@@ -115,6 +115,8 @@ def combine_pyramid_4p(x):
     mask_c = tf.expand_dims(conv8[:, :, :, 4], 3)
 
     base_x, base_y = meshgrid(tf.shape(conv8)[1], tf.shape(conv8)[2])
+    base_x = tf.tile(base_x, [tf.shape(conv8)[0], 1, 1])
+    base_y = tf.tile(base_y, [tf.shape(conv8)[0], 1, 1])
 
     flow = 0.25 * flow
 
