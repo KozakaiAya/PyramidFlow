@@ -12,7 +12,7 @@ import utils
 my_model = model.pyramid_model(input_shape=(960, 540, 12))
 
 optimizer = keras.optimizers.nadam(
-    lr=cvar.LEARNING_RATE,
+    lr=myconfig.lr,
     beta_1=0.9,
     beta_2=0.999,
     epsilon=1e-8,
@@ -34,7 +34,7 @@ callbacks = [
         save_best_only=True,
         verbose=1),
     keras.callbacks.ReduceLROnPlateau(
-        monitor='loss', verbose=1, factor=0.5, patience=5, epsilon=0.0005),
+        monitor='loss', verbose=1, factor=0.5, patience=5, min_delta=0.0005),
     keras.callbacks.TensorBoard(log_dir=myconfig.log_path),
     keras.callbacks.EarlyStopping(
         monitor='loss', patience=20, verbose=1, mode='auto'),
@@ -42,11 +42,13 @@ callbacks = [
         filename=os.path.join(myconfig.log_path, 'stats_per_epoch.csv'), append=False)
 ]
 
-keras.utils.plot_model(my_model, to_file=os.path.join(myconfig.model_save_path, 'model.png'), show_shapes=True)
+#keras.utils.plot_model(my_model, to_file=os.path.join(myconfig.model_save_path, 'model.png'), show_shapes=True)
 
 train_data_count = len(utils.get_frame_tuple_list(myconfig.dataset_path))
 val_data_count = len(utils.get_frame_tuple_list(myconfig.valset_path))
 batch_size = 32
+
+my_model.summary()
 
 
 hist = model.fit_generator(
