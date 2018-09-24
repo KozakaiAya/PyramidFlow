@@ -14,7 +14,7 @@ def get_frame_tuple_list(path):
     return frame_tuple_list
 
 def resize(img):
-    return cv2.resize(image, (myconfig.image_w, myconfig.image_h), interpolation=cv2.INTER_LANCZOS4)
+    return cv2.resize(img, (myconfig.image_w, myconfig.image_h), interpolation=cv2.INTER_LANCZOS4)
 
 def data_generator(data_path, batch_size=32):
     frame_list = get_frame_tuple_list(data_path)
