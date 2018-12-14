@@ -2,7 +2,7 @@
 
 Python implementation for `Frame Interpolation Using Deep Pyramid Flow`
 
-This repo is urrently under construction, and just for fun.
+This repo is currently under construction, and just for fun.
 
 ## References
 
